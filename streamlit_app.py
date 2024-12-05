@@ -35,7 +35,7 @@ age = st.number_input('Age', min_value=1, max_value=120)
 # คำนวณผลเมื่อกดปุ่ม
 if st.button('Predict'):
     result = predict_diabetes(pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age)
-    if result == 1:
+    if result > 0.5:
         st.write('ผลการทำนาย: คุณอาจจะเป็นโรคเบาหวาน')
     else:
         st.write('ผลการทำนาย: คุณไม่เป็นโรคเบาหวาน')
