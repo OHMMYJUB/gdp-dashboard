@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from tensorflow.keras.models import load_model
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 
 # โหลดโมเดลที่ฝึกเสร็จแล้ว
 model = load_model('diabetes_model.h5')  # หรือระบุเส้นทางของไฟล์โมเดลของคุณ
@@ -14,7 +14,7 @@ def predict_diabetes(pregnancies, glucose, blood_pressure, skin_thickness, insul
                               columns=['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age'])
     
     # สเกลข้อมูลที่กรอก (ใช้ StandardScaler หรือ MinMaxScaler)
-    scaler = StandardScaler()
+    scaler = MinMaxScaler()
     input_data_scaled = scaler.fit_transform(input_data)
     
     # ทำนายผลจากโมเดล
