@@ -13,12 +13,9 @@ def predict_diabetes(pregnancies, glucose, blood_pressure, skin_thickness, insul
     input_data = pd.DataFrame([[pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age]],
                               columns=['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age'])
     
-    # สเกลข้อมูลที่กรอก (ใช้ StandardScaler หรือ MinMaxScaler)
-    scaler = MinMaxScaler()
-    input_data_scaled = scaler.fit_transform(input_data)
     
     # ทำนายผลจากโมเดล
-    prediction = model.predict(input_data_scaled)
+    prediction = model.predict(input_data)
     return prediction[0][0]  # คืนค่าผลลัพธ์ทำนาย (0 หรือ 1)
 
 # UI สำหรับการกรอกข้อมูล
